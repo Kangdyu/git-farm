@@ -1,6 +1,6 @@
 import { globalStyle } from '@vanilla-extract/css';
 
-globalStyle('html, body, #root', {
+globalStyle('html, body, main', {
   position: 'fixed',
   top: 0,
   left: 0,

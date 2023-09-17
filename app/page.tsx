@@ -2,8 +2,11 @@
 
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import { useSession } from 'next-auth/react';
 
 export default function Home() {
+  const { data: session, status } = useSession({ required: true });
+
   return (
     <Canvas>
       <OrbitControls makeDefault />
