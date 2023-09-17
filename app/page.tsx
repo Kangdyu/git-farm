@@ -1,22 +1,17 @@
 'use client';
 
-import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
+import { GameCanvas } from '@/app/_components/GameCanvas';
+import { GameUI } from '@/app/_components/GameUI';
+import { homeContainerStyle } from '@/app/home.css';
 import { useSession } from 'next-auth/react';
 
 export default function Home() {
-  const { data: session, status } = useSession({ required: true });
+  useSession({ required: true });
 
   return (
-    <Canvas>
-      <OrbitControls makeDefault />
-
-      <directionalLight color="white" intensity={1} position={[1, 2, 3]} />
-      <ambientLight color="white" intensity={0.5} />
-      <mesh>
-        <boxGeometry />
-        <meshStandardMaterial color="red" />
-      </mesh>
-    </Canvas>
+    <div className={homeContainerStyle}>
+      <GameUI />
+      <GameCanvas />
+    </div>
   );
 }
