@@ -17,7 +17,7 @@ export function GameUI() {
           alt="User avatar"
           width={32}
           height={32}
-          src={data.user?.image ?? '/next.svg'}
+          src={data.user?.avatarUrl ?? '/next.svg'}
         />
         <span>
           {data.user?.name} ({data?.user?.email})
