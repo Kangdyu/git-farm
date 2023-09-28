@@ -21,6 +21,7 @@ export async function GET(req: NextApiRequest) {
             weeks {
               contributionDays {
                 contributionCount
+                color
                 date
               }
             }
