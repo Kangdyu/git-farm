@@ -1,6 +1,6 @@
 'use client';
 
-import { GameCanvas } from '@/app/_components/three/GameCanvas';
+import { GameCanvas } from '@/app/_components/GameCanvas';
 import { GameUI } from '@/app/_components/GameUI';
 import { homeContainerStyle } from '@/app/home.css';
 import { useSession } from 'next-auth/react';

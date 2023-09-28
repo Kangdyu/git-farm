@@ -2,7 +2,7 @@
 
 import { Center, OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { ContributionGraph } from '../ContributionGraph';
+import { ContributionGraph } from './ContributionGraph';
 
 export function GameCanvas() {
   return (

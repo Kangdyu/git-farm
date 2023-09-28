@@ -29,7 +29,7 @@ export function ContributionGraph() {
           position={[Math.floor(index / 7), (day.contributionCount / 2) * HEIGHT_SCALE, index % 7]}
           args={[1, day.contributionCount * HEIGHT_SCALE, 1]}
         >
-          <meshToonMaterial color={day.contributionCount === 0 ? '#8e7161' : day.color} />
+          <meshStandardMaterial color={day.contributionCount === 0 ? '#8e7161' : day.color} />
         </Box>
       ))}
     </>
