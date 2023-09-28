@@ -1,10 +1,9 @@
-import { NextApiRequest } from 'next';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 import { getToken } from 'next-auth/jwt';
 import { ContributionsCollection } from '@/app/_types/github-graphql';
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
   if (!token) {
