@@ -10,8 +10,8 @@ export default function Home() {
 
   return (
     <div className={homeContainerStyle}>
-      <GameUI />
       <GameCanvas />
+      <GameUI />
     </div>
   );
 }

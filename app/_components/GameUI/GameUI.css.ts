@@ -16,7 +16,6 @@ export const uiHeaderStyle = style({
   width: '100%',
   height: 60,
   padding: '0 24px',
-  borderBottom: '1px solid #000',
 });
 
 export const uiTextStyle = style({
