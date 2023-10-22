@@ -5,7 +5,7 @@ import { GameStage } from './GameStage';
 
 export function GameCanvas() {
   return (
-    <Canvas shadows>
+    <Canvas shadows={false}>
       <GameStage />
     </Canvas>
   );
