@@ -1,14 +1,13 @@
 import { style } from '@vanilla-extract/css';
 
-export const uiContainerStyle = style({
+export const container = style({
   position: 'fixed',
   top: 0,
   left: 0,
   width: '100%',
-  height: '100%',
 });
 
-export const uiHeaderStyle = style({
+export const header = style({
   display: 'flex',
   alignItems: 'center',
   gap: 16,
@@ -18,11 +17,11 @@ export const uiHeaderStyle = style({
   padding: '0 24px',
 });
 
-export const uiTextStyle = style({
+export const text = style({
   fontSize: 18,
 });
 
-export const uiAvatarStyle = style({
+export const avatar = style({
   width: 32,
   height: 32,
   borderRadius: '50%',

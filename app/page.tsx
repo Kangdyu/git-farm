@@ -1,7 +1,7 @@
 'use client';
 
 import { GameCanvas } from '@/app/_components/GameCanvas';
-import { GameUI } from '@/app/_components/GameUI';
+import { UserInterface } from '@/app/_components/UserInterface';
 import { homeContainerStyle } from '@/app/home.css';
 import { useSession } from 'next-auth/react';
 
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className={homeContainerStyle}>
       <GameCanvas />
-      <GameUI />
+      <UserInterface />
     </div>
   );
 }

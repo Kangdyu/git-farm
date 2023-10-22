@@ -1,3 +1,4 @@
+import { PALETTE } from '@/app/_constants/palette';
 import { ContributionCalendar, ContributionCalendarDay } from '@/app/_types/github-graphql';
 import { Box } from '@react-three/drei';
 import axios from 'axios';
@@ -22,16 +23,18 @@ export function ContributionGraph() {
   }, []);
 
   return (
-    <>
+    <group scale={0.1}>
       {contributions.map((day, index) => (
         <Box
           key={index}
           position={[Math.floor(index / 7), (day.contributionCount / 2) * HEIGHT_SCALE, index % 7]}
           args={[1, day.contributionCount * HEIGHT_SCALE, 1]}
         >
-          <meshStandardMaterial color={day.contributionCount === 0 ? '#8e7161' : day.color} />
+          <meshStandardMaterial
+            color={day.contributionCount === 0 ? PALETTE.farmland : day.color}
+          />
         </Box>
       ))}
-    </>
+    </group>
   );
 }

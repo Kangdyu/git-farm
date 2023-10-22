@@ -1,8 +1,8 @@
-import { uiAvatarStyle, uiContainerStyle, uiHeaderStyle } from './GameUI.css';
+import * as styles from './UserInterface.css';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
-export function GameUI() {
+export function UserInterface() {
   const { data, status } = useSession({ required: true });
 
   if (status === 'loading') {
@@ -10,10 +10,10 @@ export function GameUI() {
   }
 
   return (
-    <div className={uiContainerStyle}>
-      <header className={uiHeaderStyle}>
+    <div className={styles.container}>
+      <header className={styles.header}>
         <Image
-          className={uiAvatarStyle}
+          className={styles.avatar}
           alt="User avatar"
           width={32}
           height={32}
