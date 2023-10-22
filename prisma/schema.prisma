@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+  // directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Account {
+  id                String   @id @default(cuid())
+  type              String
+  userId            String
+  provider          String
+  providerAccountId String   @map("provider_account_id")
+  access_token      String?
+  token_type        String?
+  scope             String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model User {
+  id              String    @id @default(cuid())
+  githubId        Int       @unique
+  name            String
+  nickname        String
+  email           String?   @unique
+  emailVerified   DateTime?
+  avatarUrl       String
+  followers       Int
+  following       Int
+  coins           Int
+  contriPoints    Int
+  buildingLevel   Int
+  githubCreatedAt DateTime
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  accounts Account[]
+
+  farm      Farm?
+  inventory Inventory?
+
+  @@map("users")
+}
+
+model Farm {
+  id     String @id @default(cuid())
+  userId String @unique
+  itemId String @unique
+
+  user User @relation(fields: [userId], references: [id])
+  item Item @relation(fields: [itemId], references: [id])
+
+  @@map("farms")
+}
+
+model Shop {
+  id        String  @id @default(cuid())
+  itemId    String  @unique
+  isForSale Boolean
+
+  item Item @relation(fields: [itemId], references: [id])
+
+  @@map("shops")
+}
+
+model Inventory {
+  id       String @id @default(cuid())
+  userId   String @unique
+  itemId   String @unique
+  quantity Int
+
+  user User @relation(fields: [userId], references: [id])
+  item Item @relation(fields: [itemId], references: [id])
+
+  @@map("inventories")
+}
+
+enum ItemType {
+  CROP
+}
+
+model Item {
+  id       String   @id @default(cuid())
+  name     String
+  price    Int
+  modelUrl String
+  type     ItemType @default(CROP)
+
+  farm      Farm?
+  inventory Inventory?
+  shop      Shop?
+
+  @@map("items")
+}

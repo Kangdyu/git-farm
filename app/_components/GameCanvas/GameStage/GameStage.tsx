@@ -3,9 +3,6 @@ import { ContributionGraph } from '../ContributionGraph';
 import { useFrame } from '@react-three/fiber';
 
 export function GameStage() {
-  useFrame(({ camera }) => {
-    console.log(camera.position, camera.rotation);
-  });
   return (
     <>
       <color args={['#f5aa58']} attach="background" />
