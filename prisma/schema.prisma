@@ -30,24 +30,25 @@ model Account {
 }
 
 model User {
-  id              String    @id @default(cuid())
-  githubId        Int       @unique
-  name            String
-  nickname        String
-  email           String?   @unique
-  emailVerified   DateTime?
-  avatarUrl       String
-  followers       Int
-  following       Int
-  coins           Int
-  contriPoints    Int
-  buildingLevel   Int
-  githubCreatedAt DateTime
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  id                   String    @id @default(cuid())
+  githubId             Int       @unique
+  name                 String
+  nickname             String    @unique
+  email                String?   @unique
+  emailVerified        DateTime?
+  avatarUrl            String
+  followers            Int
+  following            Int
+  coins                Int
+  contriPoints         Int
+  buildingLevel        Int
+  // comma separated string of contribution counts. ex) "1,2,0,16,0,1, ..."
+  contributionCalendar String
+  githubCreatedAt      DateTime
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
 
-  accounts Account[]
-
+  accounts  Account[]
   farm      Farm?
   inventory Inventory?
 

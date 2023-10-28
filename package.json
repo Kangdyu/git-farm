@@ -20,6 +20,8 @@
     "axios": "^1.5.0",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
     "leva": "^0.9.35",
     "next": "13.4.16",
     "next-auth": "^4.23.1",
@@ -31,6 +33,7 @@
   "devDependencies": {
     "@types/three": "^0.155.0",
     "@vanilla-extract/next-plugin": "^2.2.2",
+    "encoding": "^0.1.13",
     "prisma": "^5.4.1"
   }
 }

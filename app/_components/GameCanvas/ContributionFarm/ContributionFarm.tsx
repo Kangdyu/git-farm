@@ -9,20 +9,21 @@ import { ContributionCalendar, ContributionCalendarDay } from '@/app/_types/gith
 export function ContributionFarm(props: GroupProps) {
   const [contributions, setContributions] = useState<ContributionCalendarDay[]>([]);
 
-  const crop = useGLTF('/models/crops/carrot.gltf');
+  const crop = useGLTF('/models/crops/grass.gltf');
 
-  useEffect(() => {
-    const fetchContributions = async () => {
-      const { data } = await axios.get<ContributionCalendar>('/api/v1/contributions');
-      const weeks = data.weeks;
+  // useEffect(() => {
+  //   const fetchContributions = async () => {
+  //     const { data } = await axios.get<ContributionCalendar>('/api/v1/users');
 
-      const days = weeks.flatMap((week) => week.contributionDays);
+  //     const weeks = data.weeks;
 
-      setContributions(days);
-    };
+  //     const days = weeks.flatMap((week) => week.contributionDays);
 
-    fetchContributions();
-  }, []);
+  //     setContributions(days);
+  //   };
+
+  //   fetchContributions();
+  // }, []);
 
   return (
     <group {...props}>
@@ -34,9 +35,9 @@ export function ContributionFarm(props: GroupProps) {
           <Clone
             key={index}
             object={crop.scene}
-            position={[Math.floor(index / 7), -1, index % 7]}
+            position={[Math.floor(index / 7), 0, index % 7]}
             castShadow
-            scale={4}
+            scale={1}
           />
         );
       })}
