@@ -4,14 +4,13 @@ import { useUser } from '@/app/[username]/UserProvider/UserProvider';
 import * as styles from './UserInterface.css';
 import Image from 'next/image';
 import { BUILDING_LEVELS } from '@/app/_lib/utils';
-import { IconCoin, IconShoppingCart } from '@tabler/icons-react';
+import { IconShoppingCart } from '@tabler/icons-react';
 
 export function UserInterface() {
   const { user } = useUser();
 
-  const nextBuildingLevelPoints = BUILDING_LEVELS.find(
-    ({ level }) => level === user.buildingLevel + 1
-  )?.startContriPoint;
+  const nextBuildingLevelPoints =
+    BUILDING_LEVELS.find(({ level }) => level === user.buildingLevel + 1)?.startContriPoint ?? '-';
 
   return (
     <div className={styles.container}>

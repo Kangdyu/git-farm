@@ -1,6 +1,6 @@
 export const BUILDING_LEVELS = [
   {
-    startContriPoint: -1,
+    startContriPoint: 0,
     level: 1,
   },
   {
@@ -16,12 +16,16 @@ export const BUILDING_LEVELS = [
     level: 4,
   },
   {
-    startContriPoint: 5000,
+    startContriPoint: 2000,
     level: 5,
   },
 ];
 
-export function getBuildingLevel(contributionPoints: number) {
-  return BUILDING_LEVELS.find(({ startContriPoint }) => startContriPoint < contributionPoints)!
-    .level;
+export function getBuildingLevel(contriPoint: number) {
+  for (let i = BUILDING_LEVELS.length - 1; i >= 0; i--) {
+    if (contriPoint >= BUILDING_LEVELS[i].startContriPoint) {
+      return BUILDING_LEVELS[i].level;
+    }
+  }
+  return 0;
 }
