@@ -5,7 +5,7 @@ import { updateUserIfOwner } from '@/app/_lib/api/updateUserIfOwner';
 import { authOptions } from '@/app/_lib/auth';
 import { homeContainerStyle } from '@/app/home.css';
 import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 export default async function UserPage({ params: { username } }: { params: { username: string } }) {
   const session = await getServerSession(authOptions);
@@ -13,11 +13,12 @@ export default async function UserPage({ params: { username } }: { params: { use
 
   await updateUserIfOwner({ session, targetUsername: username });
   const user = await getUser(username);
+  if (!user) notFound();
 
   return (
     <div className={homeContainerStyle}>
       <GameCanvas />
-      {session.user.nickname === username && <UserInterface user={user} />}
+      {session.githubLoginId === username && <UserInterface user={user} />}
     </div>
   );
 }

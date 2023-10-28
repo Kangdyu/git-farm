@@ -11,31 +11,12 @@ datasource db {
   // directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Account {
-  id                String   @id @default(cuid())
-  type              String
-  userId            String
-  provider          String
-  providerAccountId String   @map("provider_account_id")
-  access_token      String?
-  token_type        String?
-  scope             String?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-  @@map("accounts")
-}
-
 model User {
   id                   String    @id @default(cuid())
   githubId             Int       @unique
   name                 String
-  nickname             String    @unique
+  githubLoginId        String    @unique
   email                String?   @unique
-  emailVerified        DateTime?
   avatarUrl            String
   followers            Int
   following            Int
@@ -48,7 +29,7 @@ model User {
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
 
-  accounts  Account[]
+  // accounts  Account[]
   farm      Farm?
   inventory Inventory?
 
@@ -60,7 +41,7 @@ model Farm {
   userId String @unique
   itemId String @unique
 
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   item Item @relation(fields: [itemId], references: [id])
 
   @@map("farms")
@@ -82,7 +63,7 @@ model Inventory {
   itemId   String @unique
   quantity Int
 
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   item Item @relation(fields: [itemId], references: [id])
 
   @@map("inventories")
@@ -94,7 +75,7 @@ enum ItemType {
 
 model Item {
   id       String   @id @default(cuid())
-  name     String
+  name     String   @unique
   price    Int
   modelUrl String
   type     ItemType @default(CROP)

@@ -1,16 +1,14 @@
 import prisma from '../prisma';
 
-export async function getUser(nickname: string) {
+export async function getUser(githubLoginId: string) {
   const user = await prisma.user.findUnique({
     where: {
-      nickname,
+      githubLoginId,
     },
     include: {
       farm: true,
     },
   });
-
-  if (!user) throw new Error('User not found');
 
   return user;
 }
