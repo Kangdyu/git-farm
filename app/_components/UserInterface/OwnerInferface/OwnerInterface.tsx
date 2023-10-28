@@ -1,10 +1,14 @@
+import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import * as styles from './OwnerInterface.css';
 import { IconShoppingCart } from '@tabler/icons-react';
 import { useUser } from '@/app/[username]/UserProvider/UserProvider';
+import { ShopModal } from './ShopModal';
 
 export function OwnerInterface() {
   const { user } = useUser();
+
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <>
@@ -19,9 +23,11 @@ export function OwnerInterface() {
         <div className={styles.coinTextContainer}>{user.coins}</div>
       </div>
 
-      <button className={styles.shopButton}>
+      <button className={styles.shopButton} onClick={open}>
         <IconShoppingCart size={24} />
       </button>
+
+      <ShopModal opened={opened} onClose={close} title="Shop" centered />
     </>
   );
 }

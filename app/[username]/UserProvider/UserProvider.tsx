@@ -1,6 +1,6 @@
 'use client';
 
-import { UserDetail } from '@/app/_lib/api/getUser';
+import { UserDetail } from '@/app/_types/data';
 import { createContext, useContext } from 'react';
 
 interface UserContextValue {

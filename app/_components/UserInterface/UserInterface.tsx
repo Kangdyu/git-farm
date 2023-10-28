@@ -3,8 +3,8 @@
 import * as styles from './UserInterface.css';
 import Image from 'next/image';
 import { BUILDING_LEVELS } from '@/app/_lib/utils';
-import { UserDetail } from '@/app/_lib/api/getUser';
 import { OwnerInterface } from './OwnerInferface';
+import { UserDetail } from '@/app/_types/data';
 
 interface UserInterfaceProps {
   user: UserDetail;
