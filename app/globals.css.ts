@@ -6,4 +6,9 @@ globalStyle('html, body, main', {
   left: 0,
   width: '100%',
   height: '100%',
+  margin: 0,
+});
+
+globalStyle('*', {
+  boxSizing: 'border-box',
 });
