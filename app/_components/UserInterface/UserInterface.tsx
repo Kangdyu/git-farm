@@ -1,12 +1,12 @@
+'use client';
+
+import { useUser } from '@/app/[username]/UserProvider/UserProvider';
 import * as styles from './UserInterface.css';
 import Image from 'next/image';
-import { User } from '@prisma/client';
 
-interface UserInterfaceProps {
-  user: User;
-}
+export function UserInterface() {
+  const { user } = useUser();
 
-export async function UserInterface({ user }: UserInterfaceProps) {
   return (
     <div className={styles.container}>
       <header className={styles.header}>

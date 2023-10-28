@@ -1,3 +1,4 @@
+import { UserProvider } from './UserProvider';
 import { GameCanvas } from '@/app/_components/GameCanvas';
 import { UserInterface } from '@/app/_components/UserInterface';
 import { getUser } from '@/app/_lib/api/getUser';
@@ -17,8 +18,10 @@ export default async function UserPage({ params: { username } }: { params: { use
 
   return (
     <div className={homeContainerStyle}>
-      <GameCanvas />
-      {session.githubLoginId === username && <UserInterface user={user} />}
+      <UserProvider user={user}>
+        <GameCanvas />
+        {session.githubLoginId === username && <UserInterface />}
+      </UserProvider>
     </div>
   );
 }
