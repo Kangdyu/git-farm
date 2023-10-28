@@ -7,6 +7,11 @@ export type UserDetail = Prisma.UserGetPayload<{
         item: true;
       };
     };
+    inventory: {
+      include: {
+        item: true;
+      };
+    };
   };
 }>;
 

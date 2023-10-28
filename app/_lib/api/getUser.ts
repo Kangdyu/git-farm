@@ -11,6 +11,11 @@ export async function getUser(githubLoginId: string) {
           item: true,
         },
       },
+      inventory: {
+        include: {
+          item: true,
+        },
+      },
     },
   });
 
