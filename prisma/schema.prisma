@@ -12,11 +12,11 @@ datasource db {
 }
 
 model User {
-  id                   String    @id @default(cuid())
-  githubId             Int       @unique
+  id                   String   @id @default(cuid())
+  githubId             Int      @unique
   name                 String
-  githubLoginId        String    @unique
-  email                String?   @unique
+  githubLoginId        String   @unique
+  email                String?  @unique
   avatarUrl            String
   followers            Int
   following            Int
@@ -26,12 +26,11 @@ model User {
   // comma separated string of contribution counts. ex) "1,2,0,16,0,1, ..."
   contributionCalendar String
   githubCreatedAt      DateTime
-  createdAt            DateTime  @default(now())
-  updatedAt            DateTime  @updatedAt
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
 
-  // accounts  Account[]
   farm      Farm?
-  inventory Inventory?
+  inventory Inventory[]
 
   @@map("users")
 }
@@ -39,7 +38,7 @@ model User {
 model Farm {
   id     String @id @default(cuid())
   userId String @unique
-  itemId String @unique
+  itemId String
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   item Item @relation(fields: [itemId], references: [id])
@@ -59,8 +58,8 @@ model Shop {
 
 model Inventory {
   id       String @id @default(cuid())
-  userId   String @unique
-  itemId   String @unique
+  userId   String
+  itemId   String
   quantity Int
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -80,8 +79,8 @@ model Item {
   modelUrl String
   type     ItemType @default(CROP)
 
-  farm      Farm?
-  inventory Inventory?
+  farm      Farm[]
+  inventory Inventory[]
   shop      Shop?
 
   @@map("items")
