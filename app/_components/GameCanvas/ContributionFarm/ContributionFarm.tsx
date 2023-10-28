@@ -10,7 +10,7 @@ export function ContributionFarm(props: GroupProps) {
 
   return (
     <group {...props}>
-      <Plane args={[50, 8]} rotation={[-Math.PI / 2, 0, 0]} position={[24, 0.01, 3]} receiveShadow>
+      <Plane args={[55, 8]} rotation={[-Math.PI / 2, 0, 0]} position={[26, 0.01, 3]} receiveShadow>
         <meshStandardMaterial color={PALETTE.farmland} />
       </Plane>
       {user.contributionCalendar
