@@ -29,15 +29,17 @@ export function ShopModal(props: ShopModalProps) {
   return (
     <Modal {...props} size={'auto'}>
       <div className={styles.shopContainer}>
-        {shopEntities.map(({ item }) => {
-          const hasItem = !!user.inventory.find(({ item: userItem }) => userItem.id === item.id);
+        {shopEntities.map((shopEntity) => {
+          const hasItem = !!user.inventory.find(
+            ({ item: userItem }) => userItem.id === shopEntity.item.id
+          );
 
           return (
-            <form key={item.id} className={styles.shopItem} action={formAction}>
-              <input type="hidden" name="itemId" value={item.id} />
-              <input type="hidden" name="itemPrice" value={item.price} />
+            <form key={shopEntity.id} className={styles.shopItem} action={formAction}>
+              <input type="hidden" name="itemId" value={shopEntity.item.id} />
+              <input type="hidden" name="itemPrice" value={shopEntity.price} />
               <span>
-                {item.name}: ${item.price}
+                {shopEntity.item.name}: ${shopEntity.price}
               </span>
               <BuyButton hasItem={hasItem} />
             </form>

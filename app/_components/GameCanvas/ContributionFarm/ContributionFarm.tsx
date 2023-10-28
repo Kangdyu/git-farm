@@ -3,10 +3,12 @@ import { GroupProps } from '@react-three/fiber';
 
 import { PALETTE } from '@/app/_constants/palette';
 import { useUser } from '@/app/[username]/UserProvider/UserProvider';
+import { MODEL } from '@/app/_constants/models';
 
 export function ContributionFarm(props: GroupProps) {
   const { user } = useUser();
-  const crop = useGLTF(user.farm!.item.modelUrl);
+  const crop = user.farm!.item.name as keyof (typeof MODEL)['crop'];
+  const cropModel = useGLTF(MODEL.crop[crop].modelUrl);
 
   return (
     <group {...props}>
@@ -19,7 +21,7 @@ export function ContributionFarm(props: GroupProps) {
           Number(count) === 0 ? null : (
             <Clone
               key={index}
-              object={crop.scene}
+              object={cropModel.scene}
               position={[Math.floor(index / 7), 0, index % 7]}
               castShadow
               scale={1}
