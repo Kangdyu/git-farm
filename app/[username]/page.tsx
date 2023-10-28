@@ -20,7 +20,7 @@ export default async function UserPage({ params: { username } }: { params: { use
     <div className={homeContainerStyle}>
       <UserProvider user={user}>
         <GameCanvas />
-        {session.githubLoginId === username && <UserInterface />}
+        <UserInterface user={user} owner={session.githubLoginId === username} />
       </UserProvider>
     </div>
   );

@@ -1,14 +1,17 @@
 'use client';
 
-import { useUser } from '@/app/[username]/UserProvider/UserProvider';
 import * as styles from './UserInterface.css';
 import Image from 'next/image';
 import { BUILDING_LEVELS } from '@/app/_lib/utils';
-import { IconShoppingCart } from '@tabler/icons-react';
+import { UserDetail } from '@/app/_lib/api/getUser';
+import { OwnerInterface } from './OwnerInferface';
 
-export function UserInterface() {
-  const { user } = useUser();
+interface UserInterfaceProps {
+  user: UserDetail;
+  owner?: boolean;
+}
 
+export function UserInterface({ user, owner }: UserInterfaceProps) {
   const nextBuildingLevelPoints =
     BUILDING_LEVELS.find(({ level }) => level === user.buildingLevel + 1)?.startContriPoint ?? '-';
 
@@ -34,22 +37,7 @@ export function UserInterface() {
           </div>
         </div>
 
-        <div className={styles.headerRight}>
-          <div className={styles.coinContainer}>
-            <Image
-              className={styles.coinImage}
-              width={48}
-              height={48}
-              src="/images/coin.png"
-              alt="coin"
-            />
-            <div className={styles.coinTextContainer}>{user.coins}</div>
-          </div>
-
-          <button className={styles.shopButton}>
-            <IconShoppingCart size={24} />
-          </button>
-        </div>
+        <div className={styles.headerRight}>{owner && <OwnerInterface />}</div>
       </header>
     </div>
   );

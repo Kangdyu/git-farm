@@ -8,7 +8,3 @@ globalStyle('html, body, main', {
   height: '100%',
   margin: 0,
 });
-
-globalStyle('*', {
-  boxSizing: 'border-box',
-});
