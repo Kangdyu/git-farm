@@ -4,7 +4,7 @@ import { UserInterface } from '@/app/_components/UserInterface';
 import { getUser } from '@/app/_lib/api/getUser';
 import { updateUserIfOwner } from '@/app/_lib/api/updateUserIfOwner';
 import { authOptions } from '@/app/_lib/auth';
-import { homeContainerStyle } from '@/app/home.css';
+import { homeContainerStyle } from './farm.css';
 import { getServerSession } from 'next-auth';
 import { notFound, redirect } from 'next/navigation';
 

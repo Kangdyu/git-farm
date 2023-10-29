@@ -1,3 +1,4 @@
+import { PALETTE } from '@/app/_constants/palette';
 import { globalStyle } from '@vanilla-extract/css';
 
 globalStyle('html, body, main', {
@@ -7,4 +8,5 @@ globalStyle('html, body, main', {
   width: '100%',
   height: '100%',
   margin: 0,
+  backgroundColor: PALETTE.sky,
 });
