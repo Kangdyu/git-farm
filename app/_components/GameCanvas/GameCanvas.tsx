@@ -9,7 +9,7 @@ import { useRef } from 'react';
 export function GameCanvas() {
   const { color, near, far } = useControls('fog', {
     color: {
-      value: '#e1ffed',
+      value: '#e2ffee',
       onChange: (value) => {
         fogRef.current.color.set(value);
       },

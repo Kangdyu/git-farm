@@ -5,6 +5,7 @@ import { PALETTE } from '@/app/_constants/palette';
 
 import { ContributionFarm } from '../ContributionFarm';
 import { House } from '../House';
+import { Terrain } from '../Terrain';
 
 export function GameStage() {
   const { environment, preset, intensity, shadowColor, shadowOpacity } = useControls({
@@ -50,9 +51,11 @@ export function GameStage() {
 
       <OrbitControls makeDefault />
 
-      <Plane args={[500, 500]} rotation={[-Math.PI / 2, 0, 0]} position={[0, -9.5, 0]}>
+      {/* <Plane args={[500, 500]} rotation={[-Math.PI / 2, 0, 0]} position={[0, -9.5, 0]}>
         <meshBasicMaterial color={PALETTE.land} />
       </Plane>
+      <Mountains position={[0, -9.5, 0]} /> */}
+      <Terrain position={[0, -9.5, 0]} scale={20} />
 
       <Stage
         shadows={{ type: 'contact', color: shadowColor, opacity: shadowOpacity }}
