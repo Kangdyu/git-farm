@@ -1,4 +1,4 @@
-import { OrbitControls, Plane, Stage } from '@react-three/drei';
+import { OrbitControls, Stage } from '@react-three/drei';
 import { useControls } from 'leva';
 
 import { PALETTE } from '@/app/_constants/palette';
@@ -8,7 +8,7 @@ import { House } from '../House';
 import { Terrain } from '../Terrain';
 
 export function GameStage() {
-  const { environment, preset, intensity, shadowColor, shadowOpacity } = useControls({
+  const { environment, preset, intensity, shadowColor, shadowOpacity } = useControls('stage', {
     environment: {
       value: 'lobby',
       options: [
@@ -49,12 +49,8 @@ export function GameStage() {
     <>
       <color args={[PALETTE.sky]} attach="background" />
 
-      <OrbitControls makeDefault />
+      <OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
 
-      {/* <Plane args={[500, 500]} rotation={[-Math.PI / 2, 0, 0]} position={[0, -9.5, 0]}>
-        <meshBasicMaterial color={PALETTE.land} />
-      </Plane>
-      <Mountains position={[0, -9.5, 0]} /> */}
       <Terrain position={[0, -9.5, 0]} scale={20} />
 
       <Stage
