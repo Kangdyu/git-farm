@@ -35,17 +35,32 @@ export const MODEL = {
     },
   },
   decoration: {
+    bench: {
+      modelUrl: '/models/decorations/bench.gltf',
+    },
     bucket: {
       modelUrl: '/models/decorations/bucket.gltf',
     },
     chair: {
       modelUrl: '/models/decorations/chair.gltf',
     },
+    fence: {
+      modelUrl: '/models/decorations/fence.gltf',
+    },
+    rock: {
+      modelUrl: '/models/decorations/rock.gltf',
+    },
     table: {
       modelUrl: '/models/decorations/table.gltf',
     },
     terrain: {
       modelUrl: '/models/decorations/terrain.gltf',
+    },
+    tree1: {
+      modelUrl: '/models/decorations/tree-1.gltf',
+    },
+    tree2: {
+      modelUrl: '/models/decorations/tree-2.gltf',
     },
   },
 } as const;

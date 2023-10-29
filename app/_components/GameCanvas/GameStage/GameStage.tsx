@@ -61,7 +61,7 @@ export function GameStage() {
       >
         <ContributionFarm position={[-10, 0, -30]} />
 
-        <House rotation={[0, Math.PI / 2, 0]} position={[-30, 0, 10]} />
+        <House scale={20} rotation={[0, Math.PI / 2, 0]} position={[-30, 0, 5]} />
       </Stage>
     </>
   );

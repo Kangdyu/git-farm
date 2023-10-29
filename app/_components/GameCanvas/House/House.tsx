@@ -11,7 +11,7 @@ export function House(props: GroupProps) {
   const houseModel = useGLTF(MODEL.house[houseLevel].modelUrl);
 
   return (
-    <group scale={25} {...props}>
+    <group {...props}>
       <primitive object={houseModel.scene} />
     </group>
   );
