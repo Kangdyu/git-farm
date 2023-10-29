@@ -1,9 +1,10 @@
-import { EnvironmentProps, OrbitControls, Plane, Stage } from '@react-three/drei';
+import { OrbitControls, Plane, Stage } from '@react-three/drei';
 import { useControls } from 'leva';
 
 import { PALETTE } from '@/app/_constants/palette';
 
 import { ContributionFarm } from '../ContributionFarm';
+import { House } from '../House';
 
 export function GameStage() {
   // const { environment, preset, intensity } = useControls({
@@ -42,7 +43,7 @@ export function GameStage() {
 
       <Stage shadows={false} environment={'warehouse'} preset={'rembrandt'} intensity={0}>
         <Plane
-          args={[100, 100]}
+          args={[150, 150]}
           rotation={[-Math.PI / 2, 0, 0]}
           position={[0, -0.01, 0]}
           receiveShadow
@@ -50,7 +51,9 @@ export function GameStage() {
           <meshStandardMaterial color={PALETTE.land} />
         </Plane>
 
-        <ContributionFarm position={[-20, 0, -20]} />
+        <ContributionFarm position={[-10, 0, -30]} />
+
+        <House rotation={[0, Math.PI / 2, 0]} position={[-30, 0, 10]} />
       </Stage>
     </>
   );

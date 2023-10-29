@@ -2,9 +2,9 @@
 
 import * as styles from './UserInterface.css';
 import Image from 'next/image';
-import { BUILDING_LEVELS } from '@/app/_lib/utils';
 import { OwnerInterface } from './OwnerInferface';
 import { UserDetail } from '@/app/_types/data';
+import { HOUSE_LEVELS } from '@/app/_constants/house';
 
 interface UserInterfaceProps {
   user: UserDetail;
@@ -13,7 +13,7 @@ interface UserInterfaceProps {
 
 export function UserInterface({ user, owner }: UserInterfaceProps) {
   const nextBuildingLevelPoints =
-    BUILDING_LEVELS.find(({ level }) => level === user.buildingLevel + 1)?.startContriPoint ?? '-';
+    HOUSE_LEVELS.find(({ level }) => level === user.buildingLevel + 1)?.startContriPoint ?? '-';
 
   return (
     <div className={styles.container}>

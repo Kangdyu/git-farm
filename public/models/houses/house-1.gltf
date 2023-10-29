@@ -2,7 +2,7 @@
   "asset": { "generator": "Khronos glTF Blender I/O v1.5.17", "version": "2.0" },
   "scene": 0,
   "scenes": [{ "name": "Scene", "nodes": [0] }],
-  "nodes": [{ "mesh": 0, "name": "house_type04" }],
+  "nodes": [{ "mesh": 0, "name": "house_type04", "translation": [0, 0.28, 0] }],
   "materials": [
     {
       "name": "border",
