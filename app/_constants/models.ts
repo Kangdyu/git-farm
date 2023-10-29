@@ -62,6 +62,9 @@ export const MODEL = {
     tree2: {
       modelUrl: '/models/decorations/tree-2.gltf',
     },
+    truck: {
+      modelUrl: '/models/decorations/truck.gltf',
+    },
     windmill: {
       modelUrl: '/models/decorations/windmill.gltf',
     },

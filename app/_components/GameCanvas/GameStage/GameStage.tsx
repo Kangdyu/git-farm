@@ -2,7 +2,8 @@ import { ContributionFarm } from '../ContributionFarm';
 import { House } from '../House';
 import { Terrain } from '../Terrain';
 import { TableSet } from '../TableSet';
-import { Windmill } from '@/app/_components/GameCanvas/Windmill';
+import { Windmill } from '../Windmill';
+import { Truck } from '../Truck';
 
 export function GameStage() {
   return (
@@ -11,7 +12,8 @@ export function GameStage() {
 
       <House scale={20} position={[0, 0, -10]} />
       <ContributionFarm position={[-25, 0, 27]} />
-      <TableSet position={[-25, 0, 5]} />
+      <Truck position={[-36, 0, -5]} rotation-y={-Math.PI / 9} />
+      <TableSet position={[-23, 0, 7]} />
       <Windmill position={[30, 0, 5]} rotation-y={-Math.PI / 2} />
     </>
   );
