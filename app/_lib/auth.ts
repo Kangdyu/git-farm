@@ -68,6 +68,8 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user, account, profile }) {
       if (account && user && profile) {
         token.accessToken = account.access_token!;
+        token.id = user.id;
+        token.githubId = profile.id;
         token.githubLoginId = profile.login;
         token.githubCreatedAt = profile.created_at;
       }
@@ -76,6 +78,8 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       session.accessToken = token.accessToken;
+      session.id = token.id;
+      session.githubId = token.githubId;
       session.githubLoginId = token.githubLoginId;
       session.githubCreatedAt = token.githubCreatedAt;
 

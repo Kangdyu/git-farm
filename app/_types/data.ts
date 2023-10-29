@@ -20,3 +20,9 @@ export type ShopItem = Prisma.ShopGetPayload<{
     item: true;
   };
 }>;
+
+export type InventoryItem = Prisma.InventoryGetPayload<{
+  include: {
+    item: true;
+  };
+}>;

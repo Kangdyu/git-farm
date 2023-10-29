@@ -21,7 +21,13 @@ export const coinTextContainer = style({
   marginLeft: -12,
 });
 
-export const shopButton = style({
+export const buttonContainer = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 16,
+});
+
+export const iconButton = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

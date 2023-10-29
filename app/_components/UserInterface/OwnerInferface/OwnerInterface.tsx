@@ -1,14 +1,16 @@
 import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import * as styles from './OwnerInterface.css';
-import { IconShoppingCart } from '@tabler/icons-react';
+import { IconBackpack, IconShoppingCart } from '@tabler/icons-react';
 import { useUser } from '@/app/[username]/UserProvider/UserProvider';
 import { ShopModal } from './ShopModal';
+import { InventoryModal } from './InventoryModal';
 
 export function OwnerInterface() {
   const { user } = useUser();
 
-  const [opened, { open, close }] = useDisclosure(false);
+  const [inventoryOpened, { open: openInventory, close: closeInventory }] = useDisclosure(false);
+  const [shopOpened, { open: openShop, close: closeShop }] = useDisclosure(false);
 
   return (
     <>
@@ -23,11 +25,18 @@ export function OwnerInterface() {
         <div className={styles.coinTextContainer}>{user.coins}</div>
       </div>
 
-      <button className={styles.shopButton} onClick={open}>
-        <IconShoppingCart size={24} />
-      </button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.iconButton} onClick={openInventory}>
+          <IconBackpack size={24} />
+        </button>
 
-      <ShopModal opened={opened} onClose={close} title="Shop" centered />
+        <button className={styles.iconButton} onClick={openShop}>
+          <IconShoppingCart size={24} />
+        </button>
+      </div>
+
+      <InventoryModal opened={inventoryOpened} onClose={closeInventory} title="인벤토리" centered />
+      <ShopModal opened={shopOpened} onClose={closeShop} title="상점" centered />
     </>
   );
 }
