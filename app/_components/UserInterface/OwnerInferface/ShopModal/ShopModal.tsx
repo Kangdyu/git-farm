@@ -22,7 +22,11 @@ export function ShopModal(props: ShopModalProps) {
 
   const [state, formAction] = useFormState(buyItemAction, initialFormState);
 
-  const { data: shopEntities } = useSWR<ShopItem[]>('/api/shop', fetcher);
+  const { data: shopEntities } = useSWR<ShopItem[]>('/api/shop', fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
 
   if (!shopEntities) return null;
 

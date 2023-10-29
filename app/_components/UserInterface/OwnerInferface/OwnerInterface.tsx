@@ -5,6 +5,7 @@ import { IconBackpack, IconShoppingCart } from '@tabler/icons-react';
 import { useUser } from '@/app/[username]/UserProvider/UserProvider';
 import { ShopModal } from './ShopModal';
 import { InventoryModal } from './InventoryModal';
+import { mutate } from 'swr';
 
 export function OwnerInterface() {
   const { user } = useUser();
@@ -26,7 +27,13 @@ export function OwnerInterface() {
       </div>
 
       <div className={styles.buttonContainer}>
-        <button className={styles.iconButton} onClick={openInventory}>
+        <button
+          className={styles.iconButton}
+          onClick={() => {
+            mutate('/api/users/inventory');
+            openInventory();
+          }}
+        >
           <IconBackpack size={24} />
         </button>
 
