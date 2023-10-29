@@ -4,7 +4,9 @@ import { Canvas } from '@react-three/fiber';
 import { GameStage } from './GameStage';
 import { Fog } from 'three';
 import { useControls } from 'leva';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
+import { Loader } from '@react-three/drei';
+import { PALETTE } from '@/app/_constants/palette';
 
 export function GameCanvas() {
   const { color, near, far } = useControls('fog', {
@@ -40,13 +42,18 @@ export function GameCanvas() {
   const fogRef = useRef(new Fog(color, near, far));
 
   return (
-    <Canvas
-      shadows={true}
-      scene={{
-        fog: fogRef.current,
-      }}
-    >
-      <GameStage />
-    </Canvas>
+    <>
+      <Canvas
+        shadows={true}
+        scene={{
+          fog: fogRef.current,
+        }}
+      >
+        <Suspense fallback={null}>
+          <GameStage />
+        </Suspense>
+      </Canvas>
+      <Loader containerStyles={{ backgroundColor: PALETTE.sky }} dataStyles={{ color: 'black' }} />
+    </>
   );
 }
