@@ -12,6 +12,8 @@ export function ContributionFarm(props: GroupProps) {
   const crop = user.farm!.item.name as keyof (typeof MODEL)['crop'];
   const cropModel = useGLTF(MODEL.crop[crop].modelUrl);
 
+  const bucketModel = useGLTF(MODEL.decoration.bucket.modelUrl);
+
   return (
     <group {...props}>
       <Plane args={[55, 8]} rotation={[-Math.PI / 2, 0, 0]} position={[26, 0.01, 3]} receiveShadow>
@@ -19,6 +21,8 @@ export function ContributionFarm(props: GroupProps) {
       </Plane>
 
       <Fences />
+
+      <Clone object={bucketModel.scene} position={[0, 1.2, -5]} scale={3} />
 
       {user.contributionCalendar
         .split(',')

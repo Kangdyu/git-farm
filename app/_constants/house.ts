@@ -4,15 +4,15 @@ export const HOUSE_LEVELS = [
     level: 1,
   },
   {
-    startContriPoint: 2000,
+    startContriPoint: 1000,
     level: 2,
   },
   {
-    startContriPoint: 2000,
+    startContriPoint: 1500,
     level: 3,
   },
   {
-    startContriPoint: 2000,
+    startContriPoint: 1900,
     level: 4,
   },
 ];

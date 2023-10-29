@@ -1,4 +1,4 @@
-import { OrbitControls, Stage } from '@react-three/drei';
+import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { useControls } from 'leva';
 
 import { PALETTE } from '@/app/_constants/palette';
@@ -6,6 +6,8 @@ import { PALETTE } from '@/app/_constants/palette';
 import { ContributionFarm } from '../ContributionFarm';
 import { House } from '../House';
 import { Terrain } from '../Terrain';
+import { TableSet } from '../TableSet';
+import { Windmill } from '@/app/_components/GameCanvas/Windmill';
 
 export function GameStage() {
   const { environment, preset, intensity, shadowColor, shadowOpacity } = useControls('stage', {
@@ -48,21 +50,23 @@ export function GameStage() {
   return (
     <>
       <color args={[PALETTE.sky]} attach="background" />
+      <Environment preset={environment as any} />
+      <PerspectiveCamera makeDefault position={[-40, 25, 60]} />
+      <directionalLight color="white" intensity={0.5} position={[1, 2, 3]} castShadow />
+      <OrbitControls
+        makeDefault
+        minDistance={30}
+        maxDistance={100}
+        minPolarAngle={0}
+        maxPolarAngle={Math.PI / 2}
+      />
 
-      <OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
+      <Terrain position={[0, -0.01, 0]} scale={15} receiveShadow />
 
-      <Terrain position={[0, -9.5, 0]} scale={20} />
-
-      <Stage
-        shadows={{ type: 'contact', color: shadowColor, opacity: shadowOpacity }}
-        environment={environment as any}
-        preset={preset as any}
-        intensity={intensity}
-      >
-        <ContributionFarm position={[-10, 0, -30]} />
-
-        <House scale={20} rotation={[0, Math.PI / 2, 0]} position={[-30, 0, 5]} />
-      </Stage>
+      <House scale={20} position={[0, 0, -10]} castShadow />
+      <ContributionFarm position={[-25, 0, 27]} />
+      <TableSet position={[-25, 0, 5]} />
+      <Windmill position={[30, 0, 5]} rotation-y={-Math.PI / 2} />
     </>
   );
 }

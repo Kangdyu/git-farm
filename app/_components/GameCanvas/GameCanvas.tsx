@@ -41,7 +41,7 @@ export function GameCanvas() {
 
   return (
     <Canvas
-      shadows={false}
+      shadows={true}
       scene={{
         fog: fogRef.current,
       }}
