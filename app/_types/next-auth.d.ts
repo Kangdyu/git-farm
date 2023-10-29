@@ -4,7 +4,6 @@ import { GithubProfile } from 'next-auth/providers/github';
 
 interface UserInfo {
   accessToken: string;
-  id: string;
   githubId: number;
   githubLoginId: string;
   githubCreatedAt: string;
