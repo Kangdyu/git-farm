@@ -1,4 +1,4 @@
-import { Clone, Plane, useGLTF } from '@react-three/drei';
+import { Clone, ContactShadows, Plane, useGLTF } from '@react-three/drei';
 import { GroupProps } from '@react-three/fiber';
 
 import { PALETTE } from '@/app/_constants/palette';
