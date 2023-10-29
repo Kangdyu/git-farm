@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { Clone, Merged, useGLTF } from '@react-three/drei';
+import { Clone, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import { MODEL } from '@/app/_constants/models';
 import { GroupProps } from '@react-three/fiber';

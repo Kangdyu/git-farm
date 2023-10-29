@@ -16,7 +16,7 @@ export function ContributionFarm(props: GroupProps) {
 
   return (
     <group {...props}>
-      <Plane args={[55, 8]} rotation={[-Math.PI / 2, 0, 0]} position={[26, 0.01, 3]} receiveShadow>
+      <Plane args={[55, 8]} rotation={[-Math.PI / 2, 0, 0]} position={[26, 0.01, 3]}>
         <meshStandardMaterial color={PALETTE.farmland} />
       </Plane>
 
@@ -32,7 +32,6 @@ export function ContributionFarm(props: GroupProps) {
               key={index}
               object={cropModel.scene}
               position={[Math.floor(index / 7), 0, index % 7]}
-              castShadow
               scale={1}
             />
           )
