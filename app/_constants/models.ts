@@ -3,18 +3,22 @@ export const MODEL = {
     grass: {
       name: '풀',
       modelUrl: '/models/crops/grass.gltf',
+      previewImageUrl: '/images/previews/crops/grass.png',
     },
     beet: {
       name: '비트',
       modelUrl: '/models/crops/beet.gltf',
+      previewImageUrl: '/images/previews/crops/beet.png',
     },
     cabbage: {
       name: '양배추',
       modelUrl: '/models/crops/cabbage.gltf',
+      previewImageUrl: '/images/previews/crops/cabbage.png',
     },
     carrot: {
       name: '당근',
       modelUrl: '/models/crops/carrot.gltf',
+      previewImageUrl: '/images/previews/crops/carrot.png',
     },
   },
   house: {

@@ -49,8 +49,8 @@ export function OwnerInterface() {
         </Tooltip>
       </div>
 
-      <InventoryModal opened={inventoryOpened} onClose={closeInventory} title="인벤토리" centered />
-      <ShopModal opened={shopOpened} onClose={closeShop} title="상점" centered />
+      <InventoryModal opened={inventoryOpened} onClose={closeInventory} />
+      <ShopModal opened={shopOpened} onClose={closeShop} />
     </div>
   );
 }
