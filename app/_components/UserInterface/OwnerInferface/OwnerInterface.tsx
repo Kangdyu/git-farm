@@ -14,7 +14,7 @@ export function OwnerInterface() {
   const [shopOpened, { open: openShop, close: closeShop }] = useDisclosure(false);
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.coinContainer}>
         <Image
           className={styles.coinImage}
@@ -44,6 +44,6 @@ export function OwnerInterface() {
 
       <InventoryModal opened={inventoryOpened} onClose={closeInventory} title="인벤토리" centered />
       <ShopModal opened={shopOpened} onClose={closeShop} title="상점" centered />
-    </>
+    </div>
   );
 }

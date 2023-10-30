@@ -4,6 +4,7 @@ export const PALETTE = {
   dirt: '#EAD0A8',
   farmland: '#B97F71',
   fog: '#E2FFEE',
-  wood: '#DA6D42',
+  wood: '#D57934',
+  darkWood: '#8F3F0E',
   blue: '#3B9EFF',
 } as const;
