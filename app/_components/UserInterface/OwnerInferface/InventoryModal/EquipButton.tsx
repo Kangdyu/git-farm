@@ -1,3 +1,4 @@
+import { PALETTE } from '@/app/_constants/palette';
 import { Button, ButtonProps } from '@mantine/core';
 // @ts-ignore
 import { useFormStatus } from 'react-dom';
@@ -15,9 +16,11 @@ export function EquipButton({ equipped, ...props }: EquipButtonProps) {
       disabled={equipped || pending}
       aria-disabled={pending}
       loading={pending}
+      color={PALETTE.wood}
+      fullWidth
       {...props}
     >
-      {equipped ? '사용 중' : '사용'}
+      {equipped ? '사용 중' : '심기'}
     </Button>
   );
 }
