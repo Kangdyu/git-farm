@@ -43,9 +43,6 @@ export function House(props: GroupProps) {
                     {user.email}
                   </Text>
                 )}
-                <Text fz={16} c="gray">
-                  팔로워: {user.followers}, 팔로잉: {user.following}
-                </Text>
               </Stack>
               <Group>
                 <Text>
@@ -58,7 +55,10 @@ export function House(props: GroupProps) {
               </Group>
 
               <List pb={24}>
-                <List.Item>심은 농작물: {user.farm!.item.name}</List.Item>
+                <List.Item>
+                  심은 농작물:{' '}
+                  {MODEL.crop[user.farm!.item.name as keyof (typeof MODEL)['crop']].name}
+                </List.Item>
                 <List.Item>
                   마지막 농장 접속 일자: {user.updatedAt.toISOString().split('T')[0]}
                 </List.Item>
