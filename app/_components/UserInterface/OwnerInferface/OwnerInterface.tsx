@@ -1,3 +1,4 @@
+import { Tooltip } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import * as styles from './OwnerInterface.css';
@@ -23,23 +24,29 @@ export function OwnerInterface() {
           src="/images/coin.png"
           alt="coin"
         />
-        <div className={styles.coinTextContainer}>{user.coins}</div>
+        <Tooltip label="코인. 1 GitHub contribution = 1 코인입니다." position="bottom">
+          <div className={styles.coinTextContainer}>{user.coins}</div>
+        </Tooltip>
       </div>
 
       <div className={styles.buttonContainer}>
-        <button
-          className={styles.iconButton}
-          onClick={() => {
-            mutate('/api/users/inventory');
-            openInventory();
-          }}
-        >
-          <IconBackpack size={24} />
-        </button>
+        <Tooltip label="인벤토리" position="bottom">
+          <button
+            className={styles.iconButton}
+            onClick={() => {
+              mutate('/api/users/inventory');
+              openInventory();
+            }}
+          >
+            <IconBackpack size={24} />
+          </button>
+        </Tooltip>
 
-        <button className={styles.iconButton} onClick={openShop}>
-          <IconShoppingCart size={24} />
-        </button>
+        <Tooltip label="상점" position="bottom">
+          <button className={styles.iconButton} onClick={openShop}>
+            <IconShoppingCart size={24} />
+          </button>
+        </Tooltip>
       </div>
 
       <InventoryModal opened={inventoryOpened} onClose={closeInventory} title="인벤토리" centered />

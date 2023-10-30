@@ -1,3 +1,4 @@
+import { Tooltip } from '@mantine/core';
 import Image from 'next/image';
 import * as styles from './UserInfo.css';
 import { HOUSE_LEVELS } from '@/app/_constants/house';
@@ -23,10 +24,17 @@ export function UserInfo({ user }: UserInfoProps) {
       <div className={styles.nameContainer}>
         <span className={styles.idText}>{user.githubLoginId}</span>
         <div className={styles.contriPointContainer}>
-          <span className={styles.buildingLevelText}>{user.buildingLevel}</span>
-          <span>
-            {user.contriPoints} / {nextBuildingLevelPoints}
-          </span>
+          <Tooltip label="건물 레벨" position="bottom">
+            <span className={styles.buildingLevelText}>{user.buildingLevel}</span>
+          </Tooltip>
+          <Tooltip
+            label="컨트리 포인트. GitHub 가입 이후부터 현재까지의 총 contribution 횟수 입니다."
+            position="bottom"
+          >
+            <span>
+              {user.contriPoints} / {nextBuildingLevelPoints}
+            </span>
+          </Tooltip>
         </div>
       </div>
     </div>
