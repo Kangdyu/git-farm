@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
 import * as styles from './Pin.css';
 
-interface PinProps {
-  children?: ReactNode;
-}
-
-export function Pin({ children }: PinProps) {
-  return <button className={styles.pin}>{children}</button>;
+export function Pin({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button className={styles.pin} {...props}>
+      {children}
+    </button>
+  );
 }

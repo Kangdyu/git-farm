@@ -6,7 +6,6 @@ export const container = style({
   left: 0,
   width: '100%',
   fontSize: 16,
-  zIndex: 9999,
 });
 
 export const header = style({

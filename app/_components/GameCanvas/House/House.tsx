@@ -15,7 +15,7 @@ export function House(props: GroupProps) {
   return (
     <group {...props}>
       <primitive object={houseModel.scene} />
-      <Html position={[0, 1.5, 0]}>
+      <Html position={[0, 1.5, 0]} zIndexRange={[0, 0]}>
         <Pin>
           <IconHome size={36} color="white" />
         </Pin>
