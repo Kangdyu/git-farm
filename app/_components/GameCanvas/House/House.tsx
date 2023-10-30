@@ -19,7 +19,7 @@ export function House(props: GroupProps) {
   return (
     <group {...props}>
       <primitive object={houseModel.scene} />
-      <Html position={[0, 1.5, 0]} zIndexRange={[0, 0]}>
+      <Html position={[0, 1.1 + user.buildingLevel * 0.1, 0]} zIndexRange={[0, 0]}>
         <Pin onClick={openModal}>
           <IconHome size={36} color="white" />
         </Pin>

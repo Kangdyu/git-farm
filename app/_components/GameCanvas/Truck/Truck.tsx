@@ -1,4 +1,4 @@
-import { Button, Group, MantineProvider, Modal, Stack, TextInput } from '@mantine/core';
+import { Button, Group, MantineProvider, Modal, Stack, Text, TextInput } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Html, useGLTF } from '@react-three/drei';
 import { GroupProps } from '@react-three/fiber';
@@ -74,8 +74,24 @@ export function Truck(props: GroupProps) {
               setError(null);
               setLoading(false);
             }}
+            title={
+              <Text fz={24} fw={700}>
+                다른 농장 방문
+              </Text>
+            }
+            closeButtonProps={{
+              size: 'lg',
+            }}
+            styles={{
+              header: {
+                padding: 24,
+              },
+              body: {
+                padding: 24,
+                paddingTop: 0,
+              },
+            }}
             centered
-            title="다른 농장 방문"
           >
             <Stack>
               <form onSubmit={handleSubmit}>

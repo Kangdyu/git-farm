@@ -41,6 +41,9 @@ export function ShopModal(props: ShopModalProps) {
       }
       centered
       size={'auto'}
+      closeButtonProps={{
+        size: 'lg',
+      }}
       styles={{
         header: {
           padding: 24,

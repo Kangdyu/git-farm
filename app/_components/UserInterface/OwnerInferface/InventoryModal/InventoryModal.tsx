@@ -35,6 +35,9 @@ export function InventoryModal(props: InventoryModalProps) {
           인벤토리
         </Text>
       }
+      closeButtonProps={{
+        size: 'lg',
+      }}
       centered
       size={'auto'}
       styles={{
