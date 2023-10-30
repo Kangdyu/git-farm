@@ -60,6 +60,7 @@ export function Truck(props: GroupProps) {
   return (
     <group {...props}>
       <primitive object={truckModel.scene} scale={5} />
+
       <Html position={[-2, 12, 0]} zIndexRange={[0, 0]} occlude>
         <Pin onClick={openModal}>
           <IconCar size={36} color="white" />
