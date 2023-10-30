@@ -7,4 +7,7 @@ export const PALETTE = {
   wood: '#D57934',
   darkWood: '#8F3F0E',
   blue: '#3B9EFF',
+  gold: '#FFD700',
+  silver: '#C0C0C0',
+  bronze: '#CD7F32',
 } as const;
