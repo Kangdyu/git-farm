@@ -47,6 +47,22 @@ export const authOptions: NextAuthOptions = {
           },
         });
 
+        await prisma.inventory.create({
+          data: {
+            user: {
+              connect: {
+                githubLoginId: profile.login,
+              },
+            },
+            item: {
+              connect: {
+                name: 'grass',
+              },
+            },
+            quantity: 1,
+          },
+        });
+
         await prisma.farm.create({
           data: {
             user: {
