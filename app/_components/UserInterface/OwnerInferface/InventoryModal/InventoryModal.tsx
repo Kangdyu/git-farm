@@ -2,7 +2,7 @@
 
 import { fetcher } from '@/app/_lib/fetcher';
 import { InventoryItem } from '@/app/_types/data';
-import { Modal, ModalProps, Text } from '@mantine/core';
+import { Loader, Modal, ModalProps, Text } from '@mantine/core';
 import useSWR from 'swr';
 import * as styles from './InventoryModal.css';
 import { useUser } from '@/app/[username]/UserProvider/UserProvider';
@@ -25,8 +25,6 @@ export function InventoryModal(props: InventoryModalProps) {
   const [state, formAction] = useFormState(equipItemAction, initialFormState);
 
   const { data: inventory } = useSWR<InventoryItem[]>('/api/users/inventory', fetcher);
-
-  if (!inventory) return null;
 
   return (
     <Modal
@@ -52,23 +50,27 @@ export function InventoryModal(props: InventoryModalProps) {
       {...props}
     >
       <div className={styles.inventoryContainer}>
-        {inventory.map((inventoryItem) => {
-          const equipped = !!(user.farm!.itemId === inventoryItem.itemId);
-          const itemName = inventoryItem.item.name as keyof (typeof MODEL)['crop'];
-          const displayName = MODEL.crop[itemName].name;
-          const previewImage = MODEL.crop[itemName].previewImageUrl;
+        {inventory ? (
+          inventory.map((inventoryItem) => {
+            const equipped = !!(user.farm!.itemId === inventoryItem.itemId);
+            const itemName = inventoryItem.item.name as keyof (typeof MODEL)['crop'];
+            const displayName = MODEL.crop[itemName].name;
+            const previewImage = MODEL.crop[itemName].previewImageUrl;
 
-          return (
-            <form key={inventoryItem.id} className={styles.inventoryItem} action={formAction}>
-              <input type="hidden" name="itemId" value={inventoryItem.item.id} />
-              <Text fz={18} fw={500}>
-                {displayName}
-              </Text>
-              <Image src={previewImage} alt={displayName} width={128} height={128} />
-              <EquipButton equipped={equipped} />
-            </form>
-          );
-        })}
+            return (
+              <form key={inventoryItem.id} className={styles.inventoryItem} action={formAction}>
+                <input type="hidden" name="itemId" value={inventoryItem.item.id} />
+                <Text fz={18} fw={500}>
+                  {displayName}
+                </Text>
+                <Image src={previewImage} alt={displayName} width={128} height={128} />
+                <EquipButton equipped={equipped} />
+              </form>
+            );
+          })
+        ) : (
+          <Loader />
+        )}
       </div>
       <Text c="red.5">{state?.message}</Text>
     </Modal>

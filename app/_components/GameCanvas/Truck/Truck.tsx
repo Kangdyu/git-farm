@@ -2,6 +2,7 @@ import {
   ActionIcon,
   Button,
   Group,
+  Loader,
   MantineProvider,
   Modal,
   Text,
@@ -88,7 +89,10 @@ export function Truck(props: GroupProps) {
     }
   };
 
-  const { data } = useSWR<{ users: User[] }>(`/api/users/ranking?top=${RANKING_COUNT}`, fetcher);
+  const { data: rankingData } = useSWR<{ users: User[] }>(
+    `/api/users/ranking?top=${RANKING_COUNT}`,
+    fetcher
+  );
 
   return (
     <group {...props}>
@@ -142,40 +146,40 @@ export function Truck(props: GroupProps) {
               </Group>
             </form>
 
-            {data && (
-              <>
-                <Text fz={20} fw={700} mt={24} mb={12}>
-                  컨트리포인트 TOP {RANKING_COUNT}
-                </Text>
-                <ol className={styles.ranking}>
-                  {data.users.map((rankedUser, index) => (
-                    <li key={rankedUser.githubLoginId} className={styles.rankingItem}>
-                      <Group>
-                        <Text c={RANK_COLORS[index]} fz={18} fw={700}>
-                          {index + 1}
-                        </Text>
-                        <Text>
-                          {rankedUser.githubLoginId} ({rankedUser.contriPoints})
-                        </Text>
-                      </Group>
+            <Text fz={20} fw={700} mt={24} mb={12}>
+              컨트리포인트 TOP {RANKING_COUNT}
+            </Text>
+            <ol className={styles.ranking}>
+              {rankingData ? (
+                rankingData.users.map((rankedUser, index) => (
+                  <li key={rankedUser.githubLoginId} className={styles.rankingItem}>
+                    <Group>
+                      <Text c={RANK_COLORS[index]} fz={18} fw={700}>
+                        {index + 1}
+                      </Text>
+                      <Text>
+                        {rankedUser.githubLoginId} ({rankedUser.contriPoints})
+                      </Text>
+                    </Group>
 
-                      {rankedUser.githubLoginId !== user.githubLoginId && (
-                        <Tooltip label="방문">
-                          <ActionIcon
-                            component={Link}
-                            href={`/${rankedUser.githubLoginId}`}
-                            bg={PALETTE.wood}
-                            size="lg"
-                          >
-                            <IconHome />
-                          </ActionIcon>
-                        </Tooltip>
-                      )}
-                    </li>
-                  ))}
-                </ol>
-              </>
-            )}
+                    {rankedUser.githubLoginId !== user.githubLoginId && (
+                      <Tooltip label="방문">
+                        <ActionIcon
+                          component={Link}
+                          href={`/${rankedUser.githubLoginId}`}
+                          bg={PALETTE.wood}
+                          size="lg"
+                        >
+                          <IconHome />
+                        </ActionIcon>
+                      </Tooltip>
+                    )}
+                  </li>
+                ))
+              ) : (
+                <Loader />
+              )}
+            </ol>
           </Modal>
         </MantineProvider>
       </Html>

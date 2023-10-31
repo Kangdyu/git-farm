@@ -2,6 +2,8 @@ import { style } from '@vanilla-extract/css';
 
 export const inventoryContainer = style({
   display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   gap: 16,
 });
 
