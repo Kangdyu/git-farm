@@ -9,10 +9,18 @@ import { GroupProps } from '@react-three/fiber';
 import { IconHome } from '@tabler/icons-react';
 import Image from 'next/image';
 
+import * as THREE from 'three';
+
 export function House(props: GroupProps) {
   const { user } = useUser();
   const houseLevel = `level${user.buildingLevel}` as keyof (typeof MODEL)['house'];
   const houseModel = useGLTF(MODEL.house[houseLevel].modelUrl);
+  houseModel.scene.traverse((child) => {
+    if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
+      child.material.needsUpdate = true;
+      child.castShadow = true;
+    }
+  });
 
   const [modalOpened, { open: openModal, close: closeModal }] = useDisclosure(false);
 

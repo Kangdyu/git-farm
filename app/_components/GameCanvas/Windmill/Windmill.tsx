@@ -4,6 +4,7 @@ import { GroupProps, useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import { GLTF } from 'three-stdlib';
 import { Mesh } from 'three/src/Three.js';
+import * as THREE from 'three';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -18,6 +19,13 @@ type GLTFResult = GLTF & {
 export function Windmill(props: GroupProps) {
   const { nodes, materials } = useGLTF(MODEL.decoration.windmill.modelUrl) as GLTFResult;
   const rockModel = useGLTF(MODEL.decoration.rock.modelUrl);
+  rockModel.scene.traverse((child) => {
+    if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
+      child.material.needsUpdate = true;
+      child.castShadow = true;
+    }
+  });
+
   const windbladeRef = useRef<Mesh>(null);
 
   useFrame((_, delta) => {
@@ -34,12 +42,14 @@ export function Windmill(props: GroupProps) {
           material={materials.Farm_Pack_001}
           position={[0.008, 1.901, 0.171]}
           scale={0.482}
+          castShadow
         />
         <mesh
           geometry={nodes.WindMill.geometry}
           material={materials.Farm_Pack_001}
           position={[0.018, 1.565, 0.078]}
           scale={0.482}
+          castShadow
         />
       </group>
 

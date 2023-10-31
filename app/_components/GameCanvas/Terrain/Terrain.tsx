@@ -16,7 +16,12 @@ export function Terrain(props: JSX.IntrinsicElements['group']) {
 
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.Plane.geometry} material={nodes.Plane.material} scale={12.48}>
+      <mesh
+        geometry={nodes.Plane.geometry}
+        material={nodes.Plane.material}
+        scale={12.48}
+        receiveShadow
+      >
         <meshStandardMaterial color={PALETTE.land} />
       </mesh>
     </group>

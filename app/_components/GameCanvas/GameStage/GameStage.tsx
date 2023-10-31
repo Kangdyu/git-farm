@@ -13,7 +13,7 @@ export function GameStage() {
       <House scale={20} position={[0, 0, -10]} />
       <ContributionFarm position={[-25, 0, 27]} />
       <Truck position={[-36, 0, -5]} rotation-y={-Math.PI / 9} />
-      <TableSet position={[-23, 0, 7]} />
+      <TableSet position={[-25, 0, 7]} />
       <Windmill position={[30, 0, 5]} rotation-y={-Math.PI / 2} />
     </>
   );

@@ -3,6 +3,7 @@ import { Clone, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import { MODEL } from '@/app/_constants/models';
 import { GroupProps } from '@react-three/fiber';
+import { Fence } from '@/app/_components/GameCanvas/models/Fence';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -20,18 +21,12 @@ export function Fences(props: GroupProps) {
   return (
     <group {...props}>
       {Array.from({ length: 4 }).map((_, index) => (
-        <Clone
-          key={index}
-          object={fenceModel.scene}
-          position={[-3, 0, -1.5 + 3 * index]}
-          scale={3}
-        />
+        <Fence key={index} position={[-3, 0, -1.5 + 3 * index]} scale={3} />
       ))}
 
       {Array.from({ length: 19 }).map((_, index) => (
-        <Clone
+        <Fence
           key={index}
-          object={fenceModel.scene}
           position={[-1 + 3 * index, 0, 9]}
           rotation={[0, Math.PI / 2, 0]}
           scale={3}
@@ -39,9 +34,8 @@ export function Fences(props: GroupProps) {
       ))}
 
       {Array.from({ length: 4 }).map((_, index) => (
-        <Clone
+        <Fence
           key={index}
-          object={fenceModel.scene}
           position={[55, 0, -1.5 + 3 * index]}
           rotation={[0, Math.PI, 0]}
           scale={3}
@@ -49,9 +43,8 @@ export function Fences(props: GroupProps) {
       ))}
 
       {Array.from({ length: 19 }).map((_, index) => (
-        <Clone
+        <Fence
           key={index}
-          object={fenceModel.scene}
           position={[-1 + 3 * index, 0, -3]}
           rotation={[0, -Math.PI / 2, 0]}
           scale={3}

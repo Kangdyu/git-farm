@@ -9,11 +9,20 @@ import { PALETTE } from '@/app/_constants/palette';
 export function GameCanvas() {
   return (
     <>
-      <Canvas>
+      <Canvas shadows>
         <fog attach="fog" args={[PALETTE.fog, 100, 200]} />
         <color args={[PALETTE.sky]} attach="background" />
         <Environment preset={'lobby'} />
-        <directionalLight color="white" intensity={0.5} position={[1, 2, 3]} />
+
+        <directionalLight
+          color="white"
+          intensity={1.5}
+          position={[10, 30, 10]}
+          castShadow
+          shadow-mapSize={[1024, 1024]}
+        >
+          <orthographicCamera attach="shadow-camera" args={[-50, 50, 50, -50, 1, 1000]} />
+        </directionalLight>
 
         <PerspectiveCamera makeDefault position={[-40, 25, 60]} />
         <OrbitControls

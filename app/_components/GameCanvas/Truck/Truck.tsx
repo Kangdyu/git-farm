@@ -2,10 +2,8 @@ import {
   ActionIcon,
   Button,
   Group,
-  List,
   MantineProvider,
   Modal,
-  Stack,
   Text,
   TextInput,
   Tooltip,
@@ -15,6 +13,7 @@ import { Html, useGLTF } from '@react-three/drei';
 import { GroupProps } from '@react-three/fiber';
 import { IconCar, IconHome } from '@tabler/icons-react';
 import useSWR from 'swr';
+import * as THREE from 'three';
 
 import { Pin } from '@/app/_components/UserInterface/Pin';
 import { MODEL } from '@/app/_constants/models';
@@ -37,6 +36,12 @@ export function Truck(props: GroupProps) {
   const { user } = useUser();
 
   const truckModel = useGLTF(MODEL.decoration.truck.modelUrl);
+  truckModel.scene.traverse((child) => {
+    if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
+      child.material.needsUpdate = true;
+      child.castShadow = true;
+    }
+  });
 
   const [modalOpened, { open: openModal, close: closeModal }] = useDisclosure(false);
 
