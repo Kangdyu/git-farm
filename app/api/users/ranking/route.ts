@@ -1,6 +1,8 @@
 import prisma from '@/app/_lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const maxDuration = 30;
+
 export async function GET(req: NextRequest) {
   const take = req.nextUrl.searchParams.get('top') || 10;
 

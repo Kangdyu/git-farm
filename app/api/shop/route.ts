@@ -3,6 +3,8 @@ import prisma from '@/app/_lib/prisma';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 
+export const maxDuration = 30;
+
 export async function GET() {
   try {
     const session = await getServerSession(authOptions);

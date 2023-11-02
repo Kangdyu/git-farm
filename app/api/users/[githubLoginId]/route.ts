@@ -1,6 +1,8 @@
 import prisma from '@/app/_lib/prisma';
 import { NextResponse } from 'next/server';
 
+export const maxDuration = 30;
+
 export async function GET(_: Request, { params }: { params: { githubLoginId: string } }) {
   const { githubLoginId } = params;
 
